@@ -5,8 +5,8 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-// Adicionar nevoeiro linear
-scene.fog = new THREE.Fog(0x87CEEB, 100, 600); // Cor, near, far
+// Adicionar nevoeiro linear (ajustado para maior visibilidade inicial)
+scene.fog = new THREE.Fog(0x87CEEB, 200, 1000); // Aumentado near e far para o preview
 
 // Fundo gradiente
 scene.background = createGradientTexture();
@@ -24,9 +24,14 @@ function createGradientTexture() {
     return new THREE.CanvasTexture(canvas);
 }
 
-// Luz ambiente
-const light = new THREE.AmbientLight(0xffffff, 0.8);
+// Luz ambiente (aumentada para melhor visibilidade)
+const light = new THREE.AmbientLight(0xffffff, 1.0); // Aumentado de 0.8 para 1.0
 scene.add(light);
+
+// Luz direcional para destacar o terreno
+const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+directionalLight.position.set(0, 100, 50);
+scene.add(directionalLight);
 
 // Chão
 const textureLoader = new THREE.TextureLoader();
@@ -48,7 +53,7 @@ runway.position.set(0, 0.01, -46.5);
 scene.add(runway);
 
 // Pista2 com textura
-const runwayTexture = textureLoader.load('terra.png'); // URL de teste, substitua pela sua imagem
+const runwayTexture = textureLoader.load('terra.png'); // Substitua pela sua imagem
 runwayTexture.wrapS = runwayTexture.wrapT = THREE.RepeatWrapping;
 runwayTexture.repeat.set(1, 5); // Ajuste conforme necessário
 const runway1Material = new THREE.MeshStandardMaterial({ map: runwayTexture });
@@ -140,7 +145,7 @@ lakeShape3.moveTo(0, 0);
 lakeShape3.bezierCurveTo(130, -140, 100, 50, 60, 60);
 lakeShape3.bezierCurveTo(250, 120, -210, 130, -150, 50);
 lakeShape3.bezierCurveTo(-100, 20, -180, -150, 0, 0);
-const lakeGeometry3 = new THREE.ShapeGeometry(lakeShape3); // Corrigido para usar lakeShape3
+const lakeGeometry3 = new THREE.ShapeGeometry(lakeShape3);
 const waterTexture3 = textureLoader.load('https://threejs.org/examples/textures/waternormals.jpg');
 waterTexture3.wrapS = waterTexture3.wrapT = THREE.RepeatWrapping;
 waterTexture3.repeat.set(1.2, 1.2);
@@ -180,6 +185,48 @@ for (let i = 0; i < cloudCount; i++) {
     const z = Math.random() * 200 - 100; // Intervalo de -100 a 100 no eixo Z
     clouds.push(createCloud(x, z));
 }
+
+// Configurar a câmera para o preview inicial
+camera.position.set(0, 150, 200); // Posição elevada para ver o mapa
+camera.lookAt(0, 0, 0); // Olhar para o centro do mapa
+
+// Configuração da animação da câmera (sem TWEEN.js)
+let animationProgress = 0;
+const animationDuration = 10000; // 3 segundos
+const startPosition = { x: 0, y: 150, z: 200 };
+const endPosition = { x: 0, y: 10, z: 10 };
+
+// Função de animação principal
+function animate(time) {
+    requestAnimationFrame(animate);
+
+    // Animação linear da câmera
+    if (animationProgress < animationDuration) {
+        animationProgress += 16; // Aproximadamente 60 FPS
+        const t = Math.min(animationProgress / animationDuration, 1);
+        camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * t;
+        camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * t;
+        camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * t;
+        camera.lookAt(0, 0, 0);
+
+        if (t === 1) {
+            // Restaurar nevoeiro para o jogo
+            scene.fog = new THREE.Fog(0x87CEEB, 100, 600);
+        }
+    }
+
+    renderer.render(scene, camera);
+}
+
+// Iniciar a animação
+animate();
+
+// Ajustar a janela ao redimensionar
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
 
 // Exportar elementos necessários
 export { scene, camera, renderer, clouds };
