@@ -462,7 +462,7 @@ function createMountain(x, z, width = 100, height = 60, detail = 50) {
         const angle = Math.random() * Math.PI * 2;
         const distance = Math.random() * (width / 3);
         const yPos = Math.random() * height * 0.7;
-        
+            
         rock.position.set(
             Math.cos(angle) * distance,
             yPos,
