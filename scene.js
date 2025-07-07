@@ -181,54 +181,5 @@ for (let i = 0; i < cloudCount; i++) {
     clouds.push(createCloud(x, z));
 }
 
-// Configurar a câmera para o preview inicial
-camera.position.set(0, 150, 200); // Posição elevada para ver o mapa
-camera.lookAt(0, 0, 0); // Olhar para o centro do mapa
-
-// Configuração da animação da câmera (sem TWEEN.js)
-let animationProgress = 0;
-const animationDuration = 20000; // 3 segundos
-const startPosition = { x: 0, y: 150, z: 200 };
-const endPosition = { x: 0, y: 10, z: 10 };
-
-// Função de easing quadrático para animação suave
-function easeInOutQuad(t) {
-    return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
-}
-
-// Função de animação principal
-function animate(time) {
-    requestAnimationFrame(animate);
-
-    // Animação da câmera com easing quadrático
-    if (animationProgress < animationDuration) {
-        animationProgress += 16; // Aproximadamente 60 FPS
-        const t = Math.min(animationProgress / animationDuration, 1);
-        const easedT = easeInOutQuad(t); // Aplica easing quadrático
-        // Interpolação para a posição da câmera
-        camera.position.x = startPosition.x + (endPosition.x - startPosition.x) * easedT;
-        camera.position.y = startPosition.y + (endPosition.y - startPosition.y) * easedT;
-        camera.position.z = startPosition.z + (endPosition.z - startPosition.z) * easedT;
-        camera.lookAt(0, 0, 0); // Manter o foco no centro do mapa
-
-        if (t === 1) {
-            // Restaurar nevoeiro para o jogo
-            scene.fog = new THREE.Fog(0x87CEEB, 100, 600);
-        }
-    }
-
-    renderer.render(scene, camera);
-}
-
-// Iniciar a animação
-animate();
-
-// Ajustar a janela ao redimensionar
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
 // Exportar elementos necessários
 export { scene, camera, renderer, clouds };
