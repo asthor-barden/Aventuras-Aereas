@@ -1,4 +1,4 @@
-// Configuração da cena
+// Configuração da cena - otimizado para desewmpenho
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(85, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer();
