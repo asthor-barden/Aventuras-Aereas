@@ -187,8 +187,8 @@ camera.lookAt(0, 0, 0); // Olhar para o centro do mapa
 
 // Configuração da animação da câmera (sem TWEEN.js)
 let animationProgress = 0;
-const animationDuration = 20000; // 3 segundos
-const startPosition = { x: 0, y: 150, z: 200 };
+const animationDuration = 2000; // 3 segundos
+const startPosition = { x: 0, y: 300, z: 200 };
 const endPosition = { x: 0, y: 10, z: 10 };
 let animationActive = true;
 
