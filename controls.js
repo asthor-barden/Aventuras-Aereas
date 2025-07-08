@@ -734,7 +734,7 @@ planeOptions.forEach(option => {
     option.addEventListener('click', (event) => {
         event.preventDefault();
         event.stopPropagation();
-        planeSelector.classList.remove('active');
+        
         const planeFile = option.getAttribute('onclick')?.match(/'([^']+)'/)?.[1];
         if (planeFile) {
             loadPlane(planeFile);
