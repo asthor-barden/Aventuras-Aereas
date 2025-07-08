@@ -2,6 +2,7 @@
 import { scene, camera, renderer, clouds } from './scene.js';
 // Importa os prédios do jogo (usados para colisão) do arquivo buildings.js
 import { buildings } from './buildings.js';
+import { buildings } from './missions.js';
 
 // Variável global que armazena o módulo do avião atualmente carregado
 let currentPlaneModule = null;
