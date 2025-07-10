@@ -192,6 +192,14 @@ document.addEventListener('keydown', (event) => {
         case 'd': keys.d = true; break;
         case ' ': currentPlaneModule.setIsAccelerating(true); break;
     }
+
+    // Adicionar suporte para setas (sem alterar o existente)
+    switch (event.key) {
+        case 'ArrowUp': keys.w = true; break;
+        case 'ArrowDown': keys.s = true; break;
+        case 'ArrowLeft': keys.a = true; break;
+        case 'ArrowRight': keys.d = true; break;
+    }
 });
 
 document.addEventListener('keyup', (event) => {
@@ -207,18 +215,16 @@ document.addEventListener('keyup', (event) => {
         case 'd': keys.d = false; break;
         case ' ': currentPlaneModule.setIsAccelerating(false); break;
     }
-});
 
-document.addEventListener('keyup', (event) => {
-    if (!currentPlaneModule) return;
+    // Adicionar suporte para setas (sem alterar o existente)
     switch (event.key) {
-        case 'w': keys.w = false; break;
-        case 's': keys.s = false; break;
-        case 'a': keys.a = false; break;
-        case 'd': keys.d = false; break;
-        case ' ': currentPlaneModule.setIsAccelerating(false); break;
+        case 'ArrowUp': keys.w = false; break;
+        case 'ArrowDown': keys.s = false; break;
+        case 'ArrowLeft': keys.a = false; break;
+        case 'ArrowRight': keys.d = false; break;
     }
 });
+
 
 // --- FUNÇÃO DE COLISÃO ---
 function checkCollision(box1, box2) {

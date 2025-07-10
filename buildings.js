@@ -362,7 +362,6 @@ const buildings = [
     building39, building40, building41, building44, building45, building46, building47,
     building55, building56, building57, building58, building59, building60, building61, building62, building63,
     building64, building65, building66, building67, building68,
-    cylinder1, cylinder2, cube1,
     ...trees // Adiciona todas as árvores ao sistema de colisão
 ];
 // =================================================================

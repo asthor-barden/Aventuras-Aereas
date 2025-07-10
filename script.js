@@ -185,6 +185,7 @@ document.addEventListener('keyup', (event) => {
     }
 });
 
+
 // --- FUNÇÃO DE COLISÃO ---
 function checkCollision(box1, box2) {
     return box1.intersectsBox(box2);
