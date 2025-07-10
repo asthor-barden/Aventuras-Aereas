@@ -50,20 +50,20 @@ function createTextSprite(text, color, isCorrect) {
 export const missions = [
     {
         id: 0,
-        title: "Missão 1: A Letra 'A'",
+        title: "Missão 1: Letra 'A'",
         description: "Pegue 3 palavras que contenham a letra 'A'. Cuidado com as erradas!",
         plane: 'plane.js', // Cessna, mais lento e fácil de controlar
         targetCount: 3,
         itemGenerator: () => {
             const objects = [];
             const correctWords = ['CASA', 'GARRAFA', 'ARARA', 'BANANA', 'CAMISA', 'AGUA', 'MAÇÃ', 'SANDALIA', 'MALA', 'CANETA'];
-const incorrectWords = ['BULE', 'SOL', 'LIXO', 'COPO', 'SINO', 'MEL', 'VERDE', 'LEÃO', 'FOGO', 'DISCO'];
+const incorrectWords = ['BULE', 'SOL', 'LIXO', 'COPO', 'SINO', 'MEL', 'VERDE', 'VERMELHO', 'FOGO', 'DISCO'];
             
             
             // Gerar 3 palavras corretas
             for (let i = 0; i < 5; i++) {
                 const word = correctWords.splice(Math.floor(Math.random() * correctWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ffff00', true); // Verde para corretas
+                const obj = createTextSprite(word, '#ffff00', true); 
                 obj.position.set(
                     (Math.random() - 0.5) * 500, // Posição X aleatória
                     Math.random() * 30 + 15,     // Altura entre 15 e 45 metros
@@ -75,7 +75,7 @@ const incorrectWords = ['BULE', 'SOL', 'LIXO', 'COPO', 'SINO', 'MEL', 'VERDE', '
             // Gerar 5 palavras incorretas para distrair
             for (let i = 0; i < 5; i++) {
                 const word = incorrectWords.splice(Math.floor(Math.random() * incorrectWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ff0000', false); // Vermelho para incorretas
+                const obj = createTextSprite(word, '#ffff00', false); 
                  obj.position.set(
                     (Math.random() - 0.5) * 500,
                     Math.random() * 30 + 15,
@@ -89,7 +89,7 @@ const incorrectWords = ['BULE', 'SOL', 'LIXO', 'COPO', 'SINO', 'MEL', 'VERDE', '
     },   
     {
         id: 1,
-        title: "Missão 2: A Letra 'E'",
+        title: "Missão 2: Letra 'E'",
         description: "Pegue 4 palavras que contenham a letra 'E'. Cuidado com as erradas!",
         plane: 'plane-bi-motor.js', // Cessna, mais lento e fácil de controlar
         targetCount: 4,
@@ -108,7 +108,7 @@ const incorrectWords = [
             // Gerar 8 palavras corretas
             for (let i = 0; i < 8; i++) {
                 const word = correctWords.splice(Math.floor(Math.random() * correctWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ffff00', true); // Verde para corretas
+                const obj = createTextSprite(word, '#ffff00', true); 
                 obj.position.set(
                     (Math.random() - 0.5) * 600, // Posição X aleatória
                     Math.random() * 40 + 15,     // Altura entre 15 e 45 metros
@@ -120,7 +120,7 @@ const incorrectWords = [
             // Gerar 10 palavras incorretas para distrair
             for (let i = 0; i < 10; i++) {
                 const word = incorrectWords.splice(Math.floor(Math.random() * incorrectWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ff0000', false); // Vermelho para incorretas
+                const obj = createTextSprite(word, '#ffff00', false); 
                  obj.position.set(
                     (Math.random() - 0.5) * 600,
                     Math.random() * 40 + 15,
@@ -134,7 +134,7 @@ const incorrectWords = [
     },   
     {
         id: 2,
-        title: "Missão 3: A Letra 'I'",
+        title: "Missão 3: Letra 'I'",
         description: "Pegue 4 palavras que contenham a letra 'I'. Cuidado com as erradas!",
         plane: 'plane-jato.js', // Cessna, mais lento e fácil de controlar
         targetCount: 4,
@@ -152,7 +152,7 @@ const incorrectWords = [
             // Gerar 3 palavras corretas
             for (let i = 0; i < 10; i++) {
                 const word = correctWords.splice(Math.floor(Math.random() * correctWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ffff00', true); // Verde para corretas
+                const obj = createTextSprite(word, '#ffff00', true); 
                 obj.position.set(
                     (Math.random() - 0.5) * 750, // Posição X aleatória
                     Math.random() * 50 + 15,     // Altura entre 15 e 65 metros
@@ -164,7 +164,7 @@ const incorrectWords = [
             // Gerar 12 palavras incorretas para distrair
             for (let i = 0; i < 12; i++) {
                 const word = incorrectWords.splice(Math.floor(Math.random() * incorrectWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ff0000', false); // Vermelho para incorretas
+                const obj = createTextSprite(word, '#ffff00', false); 
                  obj.position.set(
                     (Math.random() - 0.5) * 750,
                     Math.random() * 50 + 15,
@@ -178,7 +178,7 @@ const incorrectWords = [
     },
     {
         id: 3,
-        title: "Missão 4: A Letra 'O'",
+        title: "Missão 4: Letra 'O'",
         description: "Pegue 5 palavras que contenham a letra 'O'. Cuidado com as erradas!",
         plane: 'plane-sr71.js', // Cessna, mais lento e fácil de controlar
         targetCount: 5,
@@ -196,7 +196,7 @@ const incorrectWords = [
             // Gerar 3 palavras corretas
             for (let i = 0; i < 15; i++) {
                 const word = correctWords.splice(Math.floor(Math.random() * correctWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ffff00', true); // Verde para corretas
+                const obj = createTextSprite(word, '#ffff00', true); 
                 obj.position.set(
                     (Math.random() - 0.5) * 950, // Posição X aleatória
                     Math.random() * 60 + 15,     // Altura entre 15 e 75 metros
@@ -208,7 +208,7 @@ const incorrectWords = [
             // Gerar 12 palavras incorretas para distrair
             for (let i = 0; i < 16; i++) {
                 const word = incorrectWords.splice(Math.floor(Math.random() * incorrectWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ff0000', false); // Vermelho para incorretas
+                const obj = createTextSprite(word, '#ffff00', false); 
                  obj.position.set(
                     (Math.random() - 0.5) * 950,
                     Math.random() * 60 + 15,
@@ -222,7 +222,7 @@ const incorrectWords = [
     },
     {
         id: 4,
-        title: "Missão 5: A Letra 'U'",
+        title: "Missão 5: Letra 'U'",
         description: "Pegue 5 palavras que contenham a letra 'U'. Cuidado com as erradas!",
         plane: 'plane-boing.js', // Cessna, mais lento e fácil de controlar
         targetCount: 5,
@@ -243,7 +243,7 @@ const incorrectWords = [
             // Gerar 3 palavras corretas
             for (let i = 0; i < 20; i++) {
                 const word = correctWords.splice(Math.floor(Math.random() * correctWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ffff00', true); // Verde para corretas
+                const obj = createTextSprite(word, '#ffff00', true); 
                 obj.position.set(
                     (Math.random() - 0.5) * 1050, // Posição X aleatória
                     Math.random() * 100 + 15,     // Altura entre 15 e 85 metros
@@ -255,7 +255,7 @@ const incorrectWords = [
             // Gerar 12 palavras incorretas para distrair
             for (let i = 0; i < 20; i++) {
                 const word = incorrectWords.splice(Math.floor(Math.random() * incorrectWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ff0000', false); // Vermelho para incorretas
+                const obj = createTextSprite(word, '#ffff00', false); 
                  obj.position.set(
                     (Math.random() - 0.5) * 1050,
                     Math.random() * 100 + 15,
@@ -292,7 +292,7 @@ const incorrectWords = [
             // Gerar 3 palavras corretas
             for (let i = 0; i < 25; i++) {
                 const word = correctWords.splice(Math.floor(Math.random() * correctWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ffff00', true); // Verde para corretas
+                const obj = createTextSprite(word, '#ffff00', true); 
                 obj.position.set(
                     (Math.random() - 0.5) * 1200, // Posição X aleatória
                     Math.random() * 300 + 15,     // Altura entre 15 e 75 metros
@@ -304,7 +304,7 @@ const incorrectWords = [
             // Gerar 12 palavras incorretas para distrair
             for (let i = 0; i < 30; i++) {
                 const word = incorrectWords.splice(Math.floor(Math.random() * incorrectWords.length), 1)[0];
-                const obj = createTextSprite(word, '#ff0000', false); // Vermelho para incorretas
+                const obj = createTextSprite(word, '#ffff00', false); 
                  obj.position.set(
                     (Math.random() - 0.5) * 1200,
                     Math.random() * 300 + 15,
