@@ -145,8 +145,8 @@ const incorrectWords = [
     'LINHA', 'PIPA', 'RISO', 'NINHO', 'VIDRO', 'CINTURA', 'MILHO', 'ILHA'
 ];
 const incorrectWords = [
-    'CASA', 'GARRAFA', 'CARRO', 'BANANA', 'BOLA', 'COPO', 'SOL', 'SANDALA', 
-    'MOTO', 'LARANJA', 'CACHORRO', 'TOM', 'COMPUTADOR', 'LUVA', 'CHAVE', 'MESA'
+    'CASA', 'GARRAFA', 'CARRO', 'BANANA', 'BOLA', 'COPO', 'SOL', 'CAFÉ', 
+    'MOTO', 'LARANJA', 'CACHORRO', 'FACA', 'COMPUTADOR', 'LUVA', 'CHAVE', 'MESA'
 ];
             
             // Gerar 3 palavras corretas
